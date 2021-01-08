@@ -5,10 +5,45 @@ var renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-var geometry = new THREE.CylinderGeometry(1,.0,5,32,1, false);
+var geometry = new THREE.CylinderGeometry(1,.0,5,8,1, true);
 var material = new THREE.MeshPhongMaterial({color: 0xcfc2c2AA, side:THREE.DoubleSide});
 var cone = new THREE.Mesh(geometry, material);
 scene.add(cone);
+
+
+
+
+
+var option = {
+
+  // reset: function() {
+  //   this.velx = 0.5;
+  //   this.vely = 0.5;
+  //   camera.position.z = 15;
+  //   camera.position.x = 0;
+  //   camera.position.y = 0;
+  //   cone.scale.x = 1;
+  //   cone.scale.y = 1;
+  //   cone.scale.z = 1;
+  //   cube.material.wireframe = true;
+  // }
+};
+
+var gui = new dat.GUI();
+
+var box = gui.addFolder('Cone');
+box.add(cone.scale, 'y', 0, 3).name('Height').listen();
+box.add(cone.scale, 'x', 0, 3).name('xRadius').listen();
+box.add(cone.scale, 'z', 0, 3).name('zRadius').listen();
+box.add(cone.material, 'wireframe').listen();
+// box.add(options, 'reset');
+
+box.open();
+
+
+
+
+
 
 // create a point light
 var pointLight = new THREE.PointLight( 0xFFFF8F );

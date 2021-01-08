@@ -1,1 +1,5 @@
 body { padding: 0; margin: 0; overflow: hidden;}
+
+.user__set-container {
+    max-width: 450px;
+}
